@@ -12,9 +12,10 @@ const QAs = ({ productId, productName }) => {
   const [questions, setQuestions] = useState([]);
   const [searchMatch, setSearchedMatch] = useState(null);
 
+// url: `http://localhost:3001/qa/questions?product_id=${productId}${count}`,
   const getQuestions = () => {
     const options = {
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions?product_id=${productId}${count}`,
+      url: `http://localhost:3001/qa/questions?product_id=${productId}`,
       method: 'get',
       headers: {
         Authorization: config.TOKEN,

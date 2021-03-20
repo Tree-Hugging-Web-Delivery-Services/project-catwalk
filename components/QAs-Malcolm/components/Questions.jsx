@@ -36,6 +36,7 @@ Questions.propTypes = {
       body: PropTypes.string,
       date: PropTypes.string,
       helpfulness: PropTypes.number,
+      reported: PropTypes.bool,
       id: PropTypes.number,
       photos: PropTypes.arrayOf(PropTypes.shape({
         url: PropTypes.string,

@@ -75,11 +75,12 @@ function AddAnswer(props) {
     return null;
   };
 
+  // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${props.questionId}/answers`,
   const submitA = (e) => {
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${props.questionId}/answers`,
+        url: `http://localhost:3001/qa/questions/${props.questionId}/answers`,
         method: 'post',
         headers: {
           Authorization: config.TOKEN,
