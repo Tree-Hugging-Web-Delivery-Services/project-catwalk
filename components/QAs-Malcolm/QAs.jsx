@@ -13,9 +13,10 @@ const QAs = ({ productId, productName }) => {
   const [searchMatch, setSearchedMatch] = useState(null);
 
 // url: `http://localhost:3001/qa/questions?product_id=${productId}${count}`,
+// url: `http://localhost:3001/qa/questions?product_id=${productId}`,
   const getQuestions = () => {
     const options = {
-      url: `http://localhost:3001/qa/questions?product_id=${productId}`,
+      url: `http://13.59.178.120/qa/questions?product_id=${productId}`,
       method: 'get',
       headers: {
         Authorization: config.TOKEN,

@@ -76,11 +76,12 @@ function AddAnswer(props) {
   };
 
   // url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions/${props.questionId}/answers`,
+  //url: `http://localhost:3001/qa/questions/${props.questionId}/answers`,
   const submitA = (e) => {
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: `http://localhost:3001/qa/questions/${props.questionId}/answers`,
+        url: `http://13.59.178.120/qa/questions/${props.questionId}/answers`,
         method: 'post',
         headers: {
           Authorization: config.TOKEN,

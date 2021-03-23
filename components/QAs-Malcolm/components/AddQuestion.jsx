@@ -49,11 +49,12 @@ function AddQuestion(props) {
   };
 
   //url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/questions',
+  //url: 'http://localhost:3001/qa/questions',
   const submitQ = (e) => {
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: 'http://localhost:3001/qa/questions',
+        url: 'http://13.59.178.120/qa/questions',
         method: 'post',
         headers: {
           Authorization: config.TOKEN,
