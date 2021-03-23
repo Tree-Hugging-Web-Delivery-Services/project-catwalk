@@ -81,9 +81,10 @@ function Q(props) {
     }
     */
     //url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${qaPath}/${id}/helpful`,
-    //url: `http://localhost:3001/qa/${qaPath}/${id}/helpful`,
+
     const options = {
       url: `http://13.59.178.120/qa/${qaPath}/${id}/helpful`,
+      //url: `http://localhost:3001/qa/${qaPath}/${id}/helpful`,
       method: 'put',
       headers: {
         Authorization: config.TOKEN,
@@ -94,10 +95,11 @@ function Q(props) {
       .catch((err) => console.log(err));
   };
   //url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${e.target.id}/report`,
-  //url: `http://localhost:3001/qa/answers/${e.target.id}/report`,
+
   const report = (e) => {
     const options = {
       url: `http://13.59.178.120/qa/answers/${e.target.id}/report`,
+      //url: `http://localhost:3001/qa/answers/${e.target.id}/report`,
       method: 'put',
       headers: {
         Authorization: config.TOKEN,
