@@ -69,17 +69,22 @@ function Q(props) {
     parseAnswers();
   }, [helpfulA]);
 
-  const handleClick = (e, id) => {
+  const handleClick = (e, id, type) => {
     e.preventDefault();
     // if (clicked === false) {
-    let qaPath = 'answers';
+    let qaPath = type;
+    /*
     if (e.target.parentNode.id.length === 6) {
       qaPath = 'questions';
     } else {
       qaPath = 'answers';
     }
+    */
+    //url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${qaPath}/${id}/helpful`,
+
     const options = {
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/${qaPath}/${id}/helpful`,
+      url: `http://13.59.178.120/qa/${qaPath}/${id}/helpful`,
+      //url: `http://localhost:3001/qa/${qaPath}/${id}/helpful`,
       method: 'put',
       headers: {
         Authorization: config.TOKEN,
@@ -89,10 +94,12 @@ function Q(props) {
       .then(() => props.setRender(true))
       .catch((err) => console.log(err));
   };
+  //url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${e.target.id}/report`,
 
   const report = (e) => {
     const options = {
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/qa/answers/${e.target.id}/report`,
+      url: `http://13.59.178.120/qa/answers/${e.target.id}/report`,
+      //url: `http://localhost:3001/qa/answers/${e.target.id}/report`,
       method: 'put',
       headers: {
         Authorization: config.TOKEN,
@@ -190,14 +197,14 @@ function Q(props) {
                 <Col id={answer.id} qid={props.question.question_id} sm="auto" style={answerStyle}>
                   Helpful?
                   {' '}
-                  <u onClick={(e) => { handleClick(e, answer.id); setHelpfulA(answer.id); }}>Yes</u>
+                  <u onClick={(e) => { handleClick(e, answer.id, 'answers'); setHelpfulA(answer.id); }}>Yes</u>
                   (
                   {answer.helpfulness}
                   )
                 </Col>
               )}
             <Col sm="auto" style={resultStyle}>
-              <u id={answer.id} onClick={(e) => report(e)}>Report</u>
+              {answer.reported ? <u id={answer.id}>Reported</u> : <u id={answer.id} onClick={(e) => report(e)}>Report</u>}
             </Col>
           </Row>
           <br />
@@ -227,7 +234,7 @@ function Q(props) {
           <Col id={props.question.question_id} sm="auto" style={questionStyle}>
             Helpful?
             {' '}
-            <u onClick={(e) => { handleClick(e, props.question.question_id); setHelpfulQ(true); }}>
+            <u onClick={(e) => { handleClick(e, props.question.question_id, 'questions'); setHelpfulQ(true); }}>
               Yes
             </u>
             (
